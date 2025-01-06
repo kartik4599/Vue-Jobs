@@ -9,7 +9,7 @@ const jobs = ref([]);
 
 onMounted(async () => {
   try {
-    const { data } = await axios.get("http://localhost:5000/jobs");
+    const { data } = await axios.get("/api/jobs");
     jobs.value = data;
   } catch (e) {
     console.log(e);
