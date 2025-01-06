@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "@/pages/HomePage.vue";
-s;
 import JobsPage from "@/pages/JobsPage.vue";
 
 const router = createRouter({
