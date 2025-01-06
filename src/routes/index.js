@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "@/pages/HomePage.vue";
 import JobsPage from "@/pages/JobsPage.vue";
 import NotFoundPage from "@/pages/NotFoundPage.vue";
+import JobDetailPage from "@/pages/JobDetailPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,11 @@ const router = createRouter({
       path: "/jobs",
       name: "jobs",
       component: JobsPage,
+    },
+    {
+      path: "/job/:id",
+      name: "job",
+      component: JobDetailPage,
     },
     {
       path: "/:catchAll(.*)",
