@@ -3,6 +3,7 @@ import HomePage from "@/pages/HomePage.vue";
 import JobsPage from "@/pages/JobsPage.vue";
 import NotFoundPage from "@/pages/NotFoundPage.vue";
 import JobDetailPage from "@/pages/JobDetailPage.vue";
+import AddJobPage from "@/pages/AddJobPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,6 +17,11 @@ const router = createRouter({
       path: "/jobs",
       name: "jobs",
       component: JobsPage,
+    },
+    {
+      path: "/jobs/add",
+      name: "add-jobs",
+      component: AddJobPage,
     },
     {
       path: "/job/:id",
