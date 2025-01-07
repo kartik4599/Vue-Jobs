@@ -1,10 +1,13 @@
 <script setup>
 import BackButton from "@/components/BackButton.vue";
-import { useRoute, RouterLink } from "vue-router";
+import { useRoute, RouterLink, useRouter } from "vue-router";
 import { reactive, onMounted } from "vue";
 import axios from "axios";
+import { useToast } from "vue-toastification";
 
 const route = useRoute();
+const router = useRouter();
+const toast = useToast();
 const { id } = route.params;
 const state = reactive({
   job: {},
@@ -18,6 +21,19 @@ onMounted(async () => {
     console.log(e);
   }
 });
+
+const deleteJob = async () => {
+  try {
+    const confirmed = confirm("Are you sure you want to delete this job?");
+    if (!confirmed) return;
+    await axios.delete("/api/jobs/" + id);
+    toast.success("Job deleted successfully");
+    router.push("/jobs");
+  } catch (e) {
+    toast.error("Something went wrong");
+    console.log(e);
+  }
+};
 </script>
 <template>
   <BackButton />
@@ -89,6 +105,7 @@ onMounted(async () => {
               >Edit Job</RouterLink
             >
             <button
+              @click="deleteJob"
               class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline mt-4 block"
             >
               Delete Job
